@@ -97,7 +97,23 @@ router.get('/search', async function (request, response) {
 router.delete('/delete', async function(request, response) {
     const url = request.query.url;
 
-    const deleteResponse = await PasswordModel.deletePassword(url);
+    const username = request.cookies.username;
+    let decryptedUsername;
+    try {
+        decryptedUsername = jwt.verify(username, "CS5610_PASSWORD")
+    } catch (e) {
+        return response.status(404).send("Invalid request")
+    }
+    try {
+        const searchResponse = await PasswordModel.findPasswordByUrl(url,decryptedUsername)
+        if(searchResponse.data === null){
+            return response.status(400).send("Url doesn't exists");
+        }else{
+            const deleteResponse = await PasswordModel.deletePassword(url);
+        }
+    }catch (error) {
+        return response.status(500).send(error)
+    }
     return response.send("Successfully delete Password Pair!")
 })
 
