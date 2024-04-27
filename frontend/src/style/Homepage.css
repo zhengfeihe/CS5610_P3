@@ -1,0 +1,27 @@
+h1 {
+    text-align: center;
+    padding-top: 20px;
+    margin: 20px 20px;
+}
+
+.paragraph-part {
+    background-color: #fff;
+    margin: 20px auto;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    border-radius: 5px;
+    width: 80%;
+    max-width: 800px;
+}
+
+h2 {
+    color: lightgray;
+}
+
+p, ul {
+    line-height: 1.6;
+}
+
+li {
+    margin-bottom: 10px;
+}

@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router';
+import "../style/login.css"
 
 export default function Login() {
     const [usernameInput, setUsernameInput] = useState('');
@@ -23,7 +24,11 @@ export default function Login() {
         setErrorValue('');
         try {
             const response = await axios.post('/api/users/login', {username: usernameInput, password: passwordInput})
-            navigate('/');
+            if(response.status === 200){
+                navigate('/password');
+            }else{
+                setErrorValue(response.data);
+            }
         } catch (e) {
             setErrorValue(e.response.data)
         }
@@ -32,19 +37,18 @@ export default function Login() {
     }
 
     return (
-        <div>
+        <div className="login-container">
             <h1>Login</h1>
-            {!!error && <h2>{error}</h2>}
-            <div>
-                <span>Username: </span><input type='text' value={usernameInput} onInput={setUsername}></input>
+            {!!error && <h2 className="error-message">{error}</h2>}
+            <div className="login-field">
+                <span>Username: </span><input type='text' value={usernameInput} onInput={setUsername} />
             </div>
-            <div>
-                <span>Password: </span><input type='text' value={passwordInput} onInput={setPassword}></input>
+            <div className="login-field">
+                <span>Password: </span><input type='text' value={passwordInput} onInput={setPassword} />
             </div>
-
-            <button onClick={submit}>Create Account/Login</button>
+            <button className="login-button" onClick={submit}>Create Account/Login</button>
         </div>
-    )
+    );
 
 
 }

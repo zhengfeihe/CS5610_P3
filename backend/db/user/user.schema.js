@@ -8,6 +8,13 @@ exports.UserSchema = new Schema({
     password: {
         type: String,
         require: true,
-    }
-}, { collection : 'usersSpr2023' });
+    },
+    requests:{
+        type: [String],
+        require: false,
+    },
+    friends:{
+        type: [String],
+        require: false,
+    },}, { collection : 'usersSpr2024' });
 

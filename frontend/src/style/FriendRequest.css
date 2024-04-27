@@ -1,0 +1,51 @@
+
+.friend-request {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.friend-request ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.friend-request li {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.friend-request button {
+    padding: 5px 10px;
+    cursor: pointer;
+    background-color: #0056b3;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.friend-request button:hover {
+    background-color: #213547;
+}
+
+.friend-request button.deny {
+    background-color: #f44336;
+}
+
+.friend-request button.deny:hover {
+    background-color: #213547;
+}
+
+.button-clicked {
+    background-color: #213547;
+    cursor: not-allowed;
+}
+
+

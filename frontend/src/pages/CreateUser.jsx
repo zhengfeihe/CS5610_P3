@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router';
+import "../style/login.css"
 
 export default function CreateUser() {
     const [usernameInput, setUsernameInput] = useState('');
@@ -31,17 +32,16 @@ export default function CreateUser() {
     }
 
     return (
-        <div>
-            <h1>Register New User</h1>
-            {!!error && <h3>{error}</h3>}
-            <div>
-                <span>Username: </span><input type='text' value={usernameInput} onInput={setUsername}></input>
+        <div className="login-container">
+            <h1>Register new user</h1>
+            {!!error && <h2 className="error-message">{error}</h2>}
+            <div className="login-field">
+                <span>Username: </span><input type='text' value={usernameInput} onInput={setUsername} />
             </div>
-            <div>
-                <span>Password: </span><input type='text' value={passwordInput} onInput={setPassword}></input>
+            <div className="login-field">
+                <span>Password: </span><input type='text' value={passwordInput} onInput={setPassword} />
             </div>
-
-            <button onClick={submit}>Create Account/Login</button>
+            <button className="login-button" onClick={submit}>Create Account/Login</button>
         </div>
     )
 

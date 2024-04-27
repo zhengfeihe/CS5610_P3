@@ -1,7 +1,6 @@
 const express = require('express');
-const helper = require('./apis/helper');
-const pokemon = require('./apis/pokemon')
 const users = require('./apis/user')
+const password = require('./apis/password')
 const app = express();
 const mongoose = require('mongoose')
 const cors = require('cors')
@@ -9,7 +8,7 @@ const path = require('path')
 const cookieParser = require('cookie-parser');
 
 
-const mongoDBEndpoint = 'mongodb+srv://hunter:banana2@seawebdevfall2021.ykjok.mongodb.net/?retryWrites=true&w=majority';
+const mongoDBEndpoint = 'mongodb+srv://user:cs5610p3@cluster0.hydaqlz.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
 mongoose.connect(mongoDBEndpoint,  { useNewUrlParser: true });
 
 const db = mongoose.connection;
@@ -21,9 +20,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 
-app.use('/api/pokemon/', pokemon);
 app.use('/api/users/', users)
-
+app.use('/api/password',password);
 
 
 let frontend_dir = path.join(__dirname, '..', 'frontend', 'dist')
@@ -40,18 +38,3 @@ app.listen(process.env.PORT || 8000, function() {
     console.log("Starting server now...")
 })
 
-
-
-// const http = require('http');
-
-// const server = http.createServer(function (request, response) {
-
-//     response.writeHead(200, { 'Content-Type': 'text/plain' });
-//     response.end('Hello web dev!');
-
-// })
-
-// // 127.0.0.1 === localhost
-// server.listen(8000, "127.0.0.1", function() {
-//     console.log("The server has started!")
-// })

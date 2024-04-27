@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 
-import './Header.css';
+import '../style/Header.css';
 import { Link } from 'react-router-dom';
 
 export default function Header() {
